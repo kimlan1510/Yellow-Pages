@@ -1,0 +1,24 @@
+﻿@{ 
+    ViewData["Title"] = "Add a Business";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model YellowPage.Models.Shop
+<h2>Create</h2>
+<hr />
+<h4>Add a new business</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.description)
+    @Html.TextBoxFor(model => model.description)
+    @Html.LabelFor(model => model.phone)
+    @Html.TextBoxFor(model => model.phone)
+    @Html.LabelFor(model => model.location)
+    @Html.TextBoxFor(model => model.location)
+    @Html.LabelFor(model => model.website)
+    @Html.TextBoxFor(model => model.website)
+    @Html.LabelFor(model => model.CategoryId)
+    @Html.DropDownList("CategoryId");
+    
+    <input type="submit" value="Create" />
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>

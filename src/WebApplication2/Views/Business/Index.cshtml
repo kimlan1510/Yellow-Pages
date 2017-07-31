@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Business List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<YellowPage.Models.Shop>
+
+
+<h2>List of Businesses</h2>
+<h4>@Html.DisplayNameFor(model => model.description)</h4>
+<ul>
+    @foreach (var listItem in Model)
+    {
+        <li>
+            @Html.DisplayFor(description => listItem.description) |
+        @Html.ActionLink("Details", "Details", new { id = listItem.id }) | @Html.ActionLink("Delete", "Delete", new { id = listItem.id }) | @Html.ActionLink("Edit", "Edit", new { id = listItem.id})
+    </li>
+    }
+</ul>
+<p>@Html.ActionLink("Add new item", "Create")</p>

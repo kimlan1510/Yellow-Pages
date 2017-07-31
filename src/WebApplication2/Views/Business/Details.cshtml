@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Business Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model YellowPage.Models.Shop
+
+
+<h2>Details</h2>
+<hr />
+@Html.DisplayNameFor(model => model.description): @Html.DisplayFor(model => model.description),Phone Number: @Html.DisplayFor(model => model.phone), Location: @Html.DisplayFor(model => model.location), Website: @Html.DisplayFor(model => model.website), @Html.DisplayFor(model => model.CategoryId)
+<p>@Html.ActionLink("Back to list", "Index")</p>
