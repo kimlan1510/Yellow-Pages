@@ -39,14 +39,28 @@ namespace YellowPage.Controllers
         //edit business
         public IActionResult Edit(int id)
         {
-            var thisbusiness = db.businesses.FirstOrDefault(something => something.id == id);
-            ViewBag.id = new SelectList(db.types, "CategoryId", "description");
-            return View(thisbusiness);
+            var thisBusiness = db.businesses.FirstOrDefault(something => something.id == id);
+            ViewBag.CategoryId = new SelectList(db.types, "CategoryId", "description");
+            return View(thisBusiness);
         }
         [HttpPost]
         public IActionResult Edit(Shop busi)
         {
             db.Entry(busi).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        //delete business
+        public ActionResult Delete(int id)
+        {
+            var thisBusiness = db.businesses.FirstOrDefault(something => something.id == id);
+            return View(thisBusiness);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var thisBusiness = db.businesses.FirstOrDefault(something => something.id == id);
+            db.businesses.Remove(thisBusiness);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
